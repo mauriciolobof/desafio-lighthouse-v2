@@ -1,4 +1,4 @@
--- schema.sql gerado automaticamente em 2026-08-12T17:10:21
+-- schema.sql gerado automaticamente em 2026-08-13T15:26:23
 -- Fonte: 24 arquivos CSV em data/raw
 
 
@@ -74,7 +74,7 @@ CREATE TABLE "fiscal_invoices" (
     "id" INTEGER PRIMARY KEY,
     "order_id" INTEGER NOT NULL,
     "nfe_number" VARCHAR(50) NOT NULL,
-    "nfe_access_key" BIGINT NOT NULL,
+    "nfe_access_key" VARCHAR(66) NOT NULL,
     "series" INTEGER NOT NULL,
     "issued_at" TIMESTAMP NOT NULL,
     "status" VARCHAR(50) NOT NULL,

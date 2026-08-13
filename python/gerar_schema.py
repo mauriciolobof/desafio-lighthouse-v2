@@ -45,7 +45,12 @@ def inferir_tipo_coluna(valores: list) -> str:
         return "DATE" 
     if all(eh_inteiro(v) for v in valores_preenchidos):
         maior_valor = max(abs(int(v)) for v in valores_preenchidos)
-        return "BIGINT" if maior_valor > 2_147_483_647 else "INTEGER"
+        if maior_valor <= 9_223_372_036_854_775_807:
+            return "BIGINT" if maior_valor > 2_147_483_647 else "INTEGER"
+        else:
+            maior_tamanho = max(len(v) for v in valores_preenchidos)
+            tamanho_coluna = max(50, int(maior_tamanho * 1.5))
+            return f"VARCHAR({tamanho_coluna})"
     if all(eh_numerico(v) for v in valores_preenchidos):
         return "NUMERIC(14,2)"
     maior_tamanho = max(len(v) for v in valores_preenchidos)
