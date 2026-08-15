@@ -59,6 +59,7 @@ def main():
     df = buscar_compras()
     df_similaridade = montar_matriz_similaridade(df)
     ranking = gerar_ranking(df_similaridade, ID_PRODUTO_REF)
+    ranking.to_csv("docs/dashboard_ranking_similaridade.csv") 
     print(f"Produto de referência: {NOME_PRODUTO_REF} (id {ID_PRODUTO_REF})")
     print("\nTop 5 produtos mais similares:")
     print(ranking)

@@ -52,6 +52,7 @@ def main():
     df = buscar_vendas_produto()
     serie_completa = montar_serie_mensal(df)
     df_previsoes = calcular_previsao(serie_completa)
+    df_previsoes.to_csv("docs/dashboard_previsao_bussola.csv", index=False)
     mae = (df_previsoes["real"] - df_previsoes["previsao"]).abs().mean()
     print(f"Produto: {NOME_PRODUTO} (id {ID_PRODUTO})")
     print(df_previsoes)
